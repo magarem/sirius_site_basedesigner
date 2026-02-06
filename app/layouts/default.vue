@@ -11,8 +11,6 @@
       <slot />
     </main>
 
-    <footer class="w-full h-40 bg-gray-800 text-white flex items-center justify-center">
-      <div class="w-1/2 h-10 bg-gray-700 rounded">Footer Content</div>
-    </footer>
+    <Footer />
   </div>
 </template>
