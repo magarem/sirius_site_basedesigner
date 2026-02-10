@@ -1,31 +1,42 @@
 <template>
-  <SectionWrapper 
-    title="Sobre nós" 
-    subtitle="Construindo uma comunidade apaixonada por café de qualidade" 
-    :showFooterLine="true"
-  >
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+ <SectionWrapper :title="response.data.title" :subtitle="response.data.description" :showFooterLine="true">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
       
-      <div class="w-full aspect-video lg:aspect-square bg-blue-500 rounded-[2.5rem] flex items-center justify-center text-white font-bold shadow-sm">
-        IMAGEM (AZUL)
+      
+
+      <div class="flex-1">
+        <!-- <h2 class="text-3xl font-bold mb-4">{{ response.data.title }}</h2> -->
+        <div class="prose prose-lg">
+          <MDCRenderer
+            class="[&_p]:mt-0"
+            v-if="response.body"
+            :body="response.body"
+            :data="response.data"
+          />
+        </div>
       </div>
-
-      <div class="flex flex-col space-y-6">
-        <div class="h-10 w-3/4 bg-green-600 rounded-lg"></div>
-        
-        <div class="space-y-4">
-          <div class="h-4 w-full bg-green-400/50 rounded"></div>
-          <div class="h-4 w-full bg-green-400/50 rounded"></div>
-          <div class="h-4 w-2/3 bg-green-400/50 rounded"></div>
-        </div>
-
-        <div class="space-y-4">
-          <div class="h-4 w-full bg-green-400/50 rounded"></div>
-          <div class="h-4 w-5/6 bg-green-400/50 rounded"></div>
-        </div>
-
-        <div class="h-12 w-48 bg-green-700 rounded-full mt-4"></div>
+      <div class="flex-1" v-if="response.data.images[0]">
+        <img :src="response.data.images[0]" class="rounded-lg shadow-lg w-full" />
       </div>
     </div>
-  </SectionWrapper>
+</SectionWrapper>
 </template>
+<script setup>
+const props = defineProps({
+  source: String, // Recebe "institucional/quem-somos.md"
+  title: String, // Recebe do JSON da Home (opcional)
+});
+
+const route = useRoute();
+
+// 2. Fetch de Dados
+const { data: response, pending } = await useFetch(
+  "/api/content/" + (props.source ? "/" + props.source : ""),
+  {
+    watch: [() => route.query.preview],
+    query: route.query,
+  },
+);
+
+console.log("Resposta da API sobre:", response.value);
+</script>
