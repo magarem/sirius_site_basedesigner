@@ -6,19 +6,21 @@ import Sobre from '~/components/Sobre.vue'
 import Catalogo from '~/components/Catalogo.vue'
 import Produtores from '~/components/Produtores.vue'
 import Blog from '~/components/Blog.vue'
+import Listfiles from '~/components/content/Listfiles/index.vue'
 
 const componentsMap = {
   Hero,
   Sobre,
   Catalogo,
   Produtores,
-  Blog
+  Blog,
+  Listfiles
 }
 
 const route = useRoute();
 
 // 2. Fetch de Dados
-const { data: response, pending } = await useFetch('/api/content/home', {
+const { data: response, pending } = await useFetch('/api/content/_index', {
   watch: [() => route.query.preview],
   query: route.query
 });

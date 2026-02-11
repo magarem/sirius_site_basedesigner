@@ -214,7 +214,7 @@ const breadcrumbItems = computed(() => {
             class="font-serif text-[35px] md:text-[40px] lg:text-[45px] font-extrabold text-[#4a3728] mb-0"
             _class="text-[10px] md:text-[10px] font-black text-[#421406] tracking-tight mb-0"
           >
-            {{ content?.data?.title || "" }}
+           >>>>  {{ content?.data?.title || "" }}
           </h1>
           <div v-if="content?.data?.title" class="header-divider"></div>
         </header>

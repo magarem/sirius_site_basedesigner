@@ -1,9 +1,6 @@
 <template>
  <SectionWrapper :title="response.data.title" :subtitle="response.data.description" :showFooterLine="true">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
-      
-      
-
       <div class="flex-1">
         <!-- <h2 class="text-3xl font-bold mb-4">{{ response.data.title }}</h2> -->
         <div class="prose prose-lg">

@@ -16,7 +16,7 @@ export default defineNuxtConfig({
     // 2. Chaves Públicas (Client-side)
     public: {
       siteUrl: process.env.NUXT_PUBLIC_SITE_URL,
-      siteName: 'novagokula',
+      siteName: process.env.NUXT_SITE_ID,
       uploadPath: process.env.NUXT_PUBLIC_UPLOAD_PATH || 'public/images'
     }
   },
