@@ -31,7 +31,7 @@ body {
 }
 
 /* 4. Estilização da Barra de Rolagem (Scrollbar) */
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
@@ -43,5 +43,5 @@ body {
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #3a2216;
-}
+} */
 </style>

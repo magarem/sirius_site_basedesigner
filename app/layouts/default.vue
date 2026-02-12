@@ -1,16 +1,33 @@
 <template>
-  <div class="min-h-screen flex flex-col bg-gray-100">
-    <header class="fixed top-0 w-full h-20 bg-blue-600 text-white z-50 flex items-center justify-between px-10">
-      <div class="w-32 h-10 bg-blue-800 rounded">Logo</div>
-      <nav class="flex gap-4">
-        <div v-for="i in 4" :key="i" class="w-16 h-6 bg-blue-400 rounded"></div>
-      </nav>
-    </header>
+  <div class="min-h-screen flex flex-col bg-slate-50">
+    
+    <NuxtLoadingIndicator color="#2563eb" />
 
-    <main class="flex-grow pt-20">
+    <Topbar />
+
+    <main class="flex-grow pt-20 w-full">
       <slot />
     </main>
 
     <Footer />
+
   </div>
 </template>
+
+<script setup>
+// Não precisa importar Topbar e Footer se eles estiverem na pasta /components
+// O Nuxt faz auto-import.
+</script>
+
+<style scoped>
+/* Se precisar de ajustes globais de transição de página */
+.page-enter-active,
+.page-leave-active {
+  transition: all 0.3s;
+}
+.page-enter-from,
+.page-leave-to {
+  opacity: 0;
+  filter: blur(0.5rem);
+}
+</style>
