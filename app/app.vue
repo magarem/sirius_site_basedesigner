@@ -1,9 +1,22 @@
+<script setup>
+const route = useRoute();
+
+// Computamos o layout baseado na URL globalmente
+const layout = computed(() => {
+  return route.query.preview === 'true' ? 'preview' : 'default';
+});
+
+// Opcional: Log para debug no servidor e no cliente
+watch(layout, (newLayout) => {
+  console.log(`[App] Layout alterado para: ${newLayout}`);
+}, { immediate: true });
+</script>
+
 <template>
   <NuxtLayout>
     <NuxtPage />
   </NuxtLayout>
 </template>
-
 <style>
 /* 1. Reset e Fundo Global */
 body {

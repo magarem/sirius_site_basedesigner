@@ -1,4 +1,5 @@
 <script setup>
+
 // 1. Imports
 import { computed } from 'vue' // Boa prática importar explicitamente
 import Hero from '~/components/Hero.vue'
@@ -8,6 +9,7 @@ import Produtores from '~/components/Produtores.vue'
 import Blog from '~/components/Blog.vue'
 import Listfiles from '~/components/content/Listfiles/index.vue'
 
+const route = useRoute();
 const componentsMap = {
   Hero,
   Sobre,
@@ -17,7 +19,7 @@ const componentsMap = {
   Listfiles
 }
 
-const route = useRoute();
+
 
 // 2. Fetch de Dados
 const { data: response, pending } = await useFetch('/api/content/_index', {
@@ -58,6 +60,8 @@ const getComponentProps = (section) => {
   }
   return props;
 }
+
+
 </script>
 
 <template>
