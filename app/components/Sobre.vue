@@ -6,15 +6,14 @@
         <div class="prose prose-lg">
           <MDCRenderer
             class="[&_p]:mt-0"
-            v-if="response.body"
             :body="response.body"
             :data="response.data"
           />
         </div>
       </div>
-      <div class="flex-1" v-if="response.data.images[0]">
+      <!-- <div class="flex-1" v-if="response.data.images[0]">
         <img :src="response.data.images[0]" class="rounded-lg shadow-lg w-full" />
-      </div>
+      </div> -->
     </div>
 </SectionWrapper>
 </template>

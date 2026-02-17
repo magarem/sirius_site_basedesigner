@@ -19,8 +19,6 @@ const componentsMap = {
   Listfiles
 }
 
-
-
 // 2. Fetch de Dados
 const { data: response, pending } = await useFetch('/api/content/_index', {
   watch: [() => route.query.preview],
@@ -32,7 +30,7 @@ console.log('Resposta da API:', response.value);
 // 3. Computed Inteligente (Filtra e Prepara)
 const sections = computed(() => {
   // Normaliza a resposta: aceita tanto Array direto quanto objeto { sections: [] }
-  const rawData = response.value.data;
+  const rawData = response.value.data || response.value;
   const list = Array.isArray(rawData) ? rawData : (rawData?.sections || []);
 
   // Filtra as seções

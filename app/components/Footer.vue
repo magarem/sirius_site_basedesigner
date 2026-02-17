@@ -6,7 +6,7 @@ const { data: response, pending } = await useFetch('/api/content/_globals/footer
   query: route.query,
 });
 
-const footer = computed(() => response.value?.data || {});
+const footer = computed(() => response.value?.data?response.value?.data:response.value || {});
 
 const footerStyles = computed(() => {
   const s = footer.value.style || {};

@@ -9,7 +9,7 @@ const { data: response, pending } = await useFetch('/api/content/_globals/topbar
   query: route.query,
 });
 
-const topbar = computed(() => response.value?.data || {});
+const topbar = computed(() => response.value?.data?response.value?.data:response.value || {});
 
 // Estilos do Header
 const headerStyles = computed(() => {
